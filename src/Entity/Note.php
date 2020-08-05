@@ -9,7 +9,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource(
- *     normalizationContext={"groups"={"invoices_read"}}
+ *     normalizationContext={"groups"={"notes_read"}}
  * )
  * @ORM\Entity(repositoryClass=NoteRepository::class)
  */
@@ -19,29 +19,31 @@ class Note
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"invoices_read"})
+     * @Groups({"notes_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"invoices_read"})
+     * @Groups({"notes_read"})
      */
     private $content;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"invoices_read"})
+     * @Groups({"notes_read"})
      */
     private $description;
 
     /**
+     * @Groups({"notes_read"})
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="notes")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
 
     /**
+     * @Groups({"notes_read"})
      * @ORM\ManyToOne(targetEntity=Project::class, inversedBy="notes")
      */
     private $project;
