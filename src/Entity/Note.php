@@ -19,19 +19,19 @@ class Note
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"notes_read"})
+     * @Groups({"notes_read", "project_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"notes_read"})
+     * @Groups({"notes_read", "project_read"})
      */
     private $content;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"notes_read"})
+     * @Groups({"notes_read", "project_read"})
      */
     private $description;
 

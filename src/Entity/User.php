@@ -21,19 +21,19 @@ class User implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"notes_read"})
+     * @Groups({"notes_read", "project_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
-     * @Groups({"notes_read"})
+     * @Groups({"notes_read", "project_read"})
      */
     private $email;
 
     /**
      * @ORM\Column(type="json")
-     * @Groups({"notes_read"})
+     * @Groups({"notes_read", "project_read"})
      */
     private $roles = [];
 
@@ -45,19 +45,19 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"notes_read"})
+     * @Groups({"notes_read", "project_read"})
      */
     private $firstName;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"notes_read"})
+     * @Groups({"notes_read", "project_read"})
      */
     private $lastName;
 
     /**
      * @ORM\Column(type="datetime")
-     * @Groups({"notes_read"})
+     * @Groups({"notes_read", "project_read"})
      */
     private $createdAt;
 

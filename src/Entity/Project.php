@@ -10,7 +10,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *     normalizationContext={"groups"={"project_read"}}
+ * )
  * @ORM\Entity(repositoryClass=ProjectRepository::class)
  */
 class Project
@@ -19,30 +21,32 @@ class Project
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"notes_read"})
+     * @Groups({"notes_read", "project_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"notes_read"})
+     * @Groups({"notes_read", "project_read"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"notes_read"})
+     * @Groups({"notes_read", "project_read"})
      */
     private $description;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="projets")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"project_read"})
      */
     private $user;
 
     /**
      * @ORM\OneToMany(targetEntity=Note::class, mappedBy="project")
+     * @Groups({"project_read"})
      */
     private $notes;
 
