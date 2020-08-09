@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use App\Repository\ProjectRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -11,7 +12,13 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource(
- *     normalizationContext={"groups"={"project_read"}}
+ *     collectionOperations={
+ *      "GET"={"path"="/projets","openapi_context"={"summary"="Lister les projets","description"="Liste vos propre projet"}},
+ *      "POST"={"path"="/projet","openapi_context"={"summary"="Création d'un nouveau projet"}}
+ *     },
+ *     itemOperations={"GET"={"path"="/projet/{id}"}, "DELETE"={"path"="/projet/{id}"}, "PATCH"={"path"="/projet/{id}"}},
+ *     normalizationContext={"groups"={"project_read"}},
+ *     subresourceOperations={"notes_get_subresource"={"path"="/project/{id}/notes"}}
  * )
  * @ORM\Entity(repositoryClass=ProjectRepository::class)
  */
@@ -46,6 +53,7 @@ class Project
 
     /**
      * @ORM\OneToMany(targetEntity=Note::class, mappedBy="project")
+     * @ApiSubresource()
      * @Groups({"project_read"})
      */
     private $notes;
