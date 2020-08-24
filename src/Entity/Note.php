@@ -9,8 +9,15 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource(
- *     collectionOperations={},
- *     itemOperations={},
+ *     collectionOperations={
+ *          "GET"={"path"="/notes"},
+ *          "POST"={"path"="/notes"}
+ *     },
+ *     itemOperations={
+ *          "GET"={"path"="/notes/{id}"},
+ *          "DELETE"={"path"="/notes/{id}"},
+ *          "PATCH"={"path"="/notes/{id}"}
+ *     },
  *     normalizationContext={"groups"={"notes_read"}},
  *     subresourceOperations={"api_project_note_get_subresource"={"normalization_context"={"groups"="notes_subresource"}}}
  * )

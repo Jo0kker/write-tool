@@ -13,12 +13,12 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ApiResource(
  *     collectionOperations={
- *      "GET"={"path"="/projets","openapi_context"={"summary"="Lister les projets","description"="Liste vos propre projet"}},
- *      "POST"={"path"="/projet","openapi_context"={"summary"="Création d'un nouveau projet"}}
+ *      "GET"={"path"="/projects","openapi_context"={"summary"="Lister les projets","description"="Liste vos propre projet"}},
+ *      "POST"={"path"="/projects","openapi_context"={"summary"="Création d'un nouveau projet"}}
  *     },
- *     itemOperations={"GET"={"path"="/projet/{id}"}, "DELETE"={"path"="/projet/{id}"}, "PATCH"={"path"="/projet/{id}"}},
+ *     itemOperations={"GET"={"path"="/projects/{id}"}, "DELETE"={"path"="/projects/{id}"}, "PATCH"={"path"="/projects/{id}"}},
  *     normalizationContext={"groups"={"project_read"}},
- *     subresourceOperations={"notes_get_subresource"={"path"="/project/{id}/notes"}}
+ *     subresourceOperations={"notes_get_subresource"={"path"="/projects/{id}/notes"}}
  * )
  * @ORM\Entity(repositoryClass=ProjectRepository::class)
  */
